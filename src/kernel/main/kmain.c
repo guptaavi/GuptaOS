@@ -215,6 +215,20 @@ void kmain(uint32_t multiboot_magic, uint32_t multiboot_info_addr) {
     __asm__ __volatile__ ("sti");
     print_string("Interrupts re-enabled.", 31, 0);
 
+    // --- MEMORY DUMP DEBUG CODE ---
+    print_string("--- DUMPING MULTIBOOT STRUCT (Offset: Value) ---", 0, 0);
+    for (int i = 0; i < 24; i++) {
+        uint32_t *ptr = (uint32_t *)multiboot_info_addr;
+        uint32_t val = ptr[i];
+        char offset_str[5];
+
+        itoa(i * 4, offset_str);
+        print_string(offset_str, 2 + i, 0);
+        print_string(": ", 2 + i, 4);
+        print_hex(val, 2 + i, 6);
+    }
+    // --- END DEBUG CODE ---
+
     while (1) {
     }
 }
