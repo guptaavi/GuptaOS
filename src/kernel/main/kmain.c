@@ -5,18 +5,27 @@
 #include "../include/paging.h"
 #include "../include/frame_allocator.h"
 #include "../include/kmalloc.h"
+#include "../include/io.h"
 
 void print_string(const char *s, int row, int col) {
+    // Print to screen
     char *videomemptr = (char *)0xb8000;
     unsigned int offset = (row * 80 + col) * 2;
-
     unsigned int j = 0;
     while (s[j] != '\0') {
         videomemptr[offset] = s[j];
         videomemptr[offset + 1] = 0x02;
-        ++j;
-        offset = offset + 2;
+        j++;
+        offset += 2;
     }
+
+    // Print to serial
+    j = 0;
+    while (s[j] != '\0') {
+        serial_write(s[j]);
+        j++;
+    }
+    serial_write('\n');
 }
 
 void itoa(int n, char s[]) {
@@ -61,6 +70,8 @@ void print_hex(uint32_t value, int row, int col) {
 
 
 void kmain(uint32_t multiboot_magic, uint32_t multiboot_info_addr) {
+    serial_init();
+
     char *videomemptr = (char *)0xb8000;
     unsigned int j = 0;
     while (j < 80 * 25 * 2) {
