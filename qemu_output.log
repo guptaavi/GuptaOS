@@ -1,0 +1,40 @@
+c[?7l[2J[0mSeaBIOS (version 1.16.3-debian-1.16.3-2)
+Booting from ROM..Initializing IDT...
+Enabling interrupts...
+Interrupts temporarily disabled.
+Kernel running!
+Multiboot magic number OK.
+Multiboot info addr:
+0x00009500
+Flags from addr:
+0x0000024F
+Multiboot magic:
+0x2BADB002
+Multiboot flags:
+0x0000024F
+Paging initialized.
+--------------------------------------------------------------------------------
+Initializing frame allocator...
+  Multiboot memory map found.
+  mmap_addr:
+0x00000078
+  mmap_length:
+0x00000000
+  Max physical address:
+0x00000000
+  Total frames:
+0
+  Bitmap placed at:
+0x00200000
+  Marking all frames as used...
+  All frames marked used.
+  Marking available RAM as free...
+  Available RAM marked free.
+  Marking bitmap pages as used...
+  Bitmap pages marked used.
+  Marking kernel pages as used...
+  Kernel pages marked used.
+Frame allocator initialization complete.
+Frame allocator initialized.
+Testing map_page...
+Failed to allocate physical frame for map_page test.

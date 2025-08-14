@@ -3,8 +3,8 @@ bits 32  ;nasm directive - 32 bit
          ;multiboot spec
          align 4
          dd 0x1BADB002 ;magic
-         dd 0x63 ;flags (page align, memory info, ELF symbols, memory map)
-         dd - (0x1BADB002 + 0x63) ;checksum
+         dd 0x03 ;flags (MULTIBOOT_PAGE_ALIGN | MULTIBOOT_MEMORY_INFO)
+         dd - (0x1BADB002 + 0x03) ;checksum
          
         global start ;to set symbols from source code as global 
         extern kmain ;kmain is the function in C file
