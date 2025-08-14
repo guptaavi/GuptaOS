@@ -44,7 +44,7 @@ kernel.bin: ${ASM_OBJECTS} ${C_OBJECTS}
 
 # Run in QEMU
 run: 
-	qemu-system-i386 -M isapc -m 64M -kernel kernel.bin -serial file:qemu_output.log
+	qemu-system-i386 -M isapc -m 64M -kernel kernel.bin -serial file:qemu_output.log -nographic
 
 # Clean up
 clean:
