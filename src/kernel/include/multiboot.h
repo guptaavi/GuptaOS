@@ -26,7 +26,7 @@ typedef struct multiboot_info {
     uint16_t vbe_interface_seg;
     uint16_t vbe_interface_off;
     uint16_t vbe_interface_len;
-} __attribute__((packed)) multiboot_info_t;
+} __attribute__((packed,gcc_struct)) multiboot_info_t;
 
 // Multiboot memory map tag structure
 typedef struct multiboot_mmap_entry {
@@ -36,7 +36,7 @@ typedef struct multiboot_mmap_entry {
     uint32_t len_low;
     uint32_t len_high;
     uint32_t type;
-} __attribute__((packed)) multiboot_mmap_entry_t;
+} __attribute__((packed,gcc_struct)) multiboot_mmap_entry_t;
 
 // Multiboot flags
 #define MULTIBOOT_FLAG_MEM     0x001

@@ -57,7 +57,7 @@ void init_idt() {
 
 // Generic C interrupt handler
 void isr_handler(void) {
-    print_string("Interrupt received!", 6, 0); // Print on row 6
+    print_string("Interrupt received!", 24, 61); // Print on bottom right
     // For now, just acknowledge the interrupt if it's from the PIC
     // Later, we'll add more sophisticated PIC handling
     outb(0x20, 0x20); // EOI to master PIC

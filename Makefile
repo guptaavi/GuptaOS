@@ -20,6 +20,9 @@ LDFLAGS = -m elf_i386 -T src/linker.ld
 C_SOURCES = src/kernel/main/kmain.c \
             src/kernel/idt/idt.c \
             src/kernel/io/io.c \
+            src/kernel/mem/paging.c \
+            src/kernel/mem/frame_allocator.c \
+            src/kernel/mem/kmalloc.c \
             src/kernel/utils/stack_chk_fail.c
 ASM_SOURCES = src/boot.asm
 
@@ -41,7 +44,7 @@ kernel.bin: ${ASM_OBJECTS} ${C_OBJECTS}
 
 # Run in QEMU
 run: 
-	qemu-system-i386 -M isapc -m 64M -kernel kernel.bin
+	qemu-system-i386 -M isapc -m 64M -kernel kernel.bin -serial file:qemu_output.log
 
 # Clean up
 clean:
